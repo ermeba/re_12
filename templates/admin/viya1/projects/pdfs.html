@@ -1,0 +1,429 @@
+{% extends 'admin/base.html' %}
+{% load i18n static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/admin/admin.css' %}">
+            <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+{#        <link href="css/styles.css" rel="stylesheet" />#}
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{% static 'css/admin/admin.css' %}">
+        <link rel="stylesheet" href="{% static 'css/admin/template.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <meta charset="UTF-8">
+        <meta name="description" content="Projects">
+        <meta name="keywords" content="blalbalbal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title> Projects </title>
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+
+        <!-- Css Styles -->
+
+        <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}" type="text/css">
+        <link rel="stylesheet"  href="{% static 'css1/font-awesome.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css1/elegant-icons.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css1/jquery-ui.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css1/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/magnific-popup.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css1/slicknav.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css1/style.css' %}" type="text/css">
+
+{% endblock %}
+
+{% block branding %}
+    <img class="logo" class="logo" height="70px" width="60px" src="{% static 'viya1/images/Logo.png' %}"/>
+    <h1 id="site-name" style="display:none;"><a href="{%  url 'admin:index' %}">Viya Database</a></h1>
+{% endblock %}
+{% block usertools %}
+        {% if has_permission %}
+        <div id="user-tools">
+
+            {% block welcome-msg %}
+                {% translate 'Welcome,' %}
+                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+            {% endblock %}
+
+            {% block userlinks %}
+                {% if site_url %}
+                    <a href="{{ site_url }}">{% translate 'View site' %}</a> /
+                {% endif %}
+            {% endblock %}
+
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                    {% if user.is_active and user.is_staff %}
+                        {% url 'django-admindocs-docroot' as docsroot %}
+                        {% if docsroot %}
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="{{ docsroot }}">{% translate 'Documentation' %}</a></li>
+                         {% endif %}
+                    {% endif %}
+
+                      {% if user.has_usable_password %}
+                      <li><a class="dropdown-item" href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a></li>
+                      {% endif %}
+
+                      <li><hr class="dropdown-divider" /></li>
+                      <li><a class="dropdown-item" href="{% url 'admin:logout' %}">{% translate 'Log out' %}</a></li>
+
+                    </ul>
+                </li>
+                <script src= "{% static 'js/script.js' %}"></script>
+                <script src= "{% static 'js/datatables-simple-demo.js' %}"></script>
+                <script src= "{% static 'assets/chart-area-demo.js' %}"></script>
+                <script src= "{% static 'assets/demo/chart-bar-demo.js' %}"></script>
+            </ul>
+
+        </div>
+  {% endif %}
+
+{% endblock %}
+{% block nav-sidebar %}
+{% endblock %}
+{% block content %}
+<div id="content-main">
+</div>
+{% endblock %}
+
+
+{% block content_title %}
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    {% if title %}
+    <h1 style='display:none;'>{{ title }}</h1>
+    {% endif %}
+
+    <div class="row container-fluid p-2" style="font-family:Trebuchet MS;"1>
+            <!-- Hero Section Begin -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hs-slider owl-carousel">
+
+                {% if photo.values  %}
+                {% for x in photo.values %}
+                <div class="hs-item set-bg" data-setbg="/media/{{ x.photo_project }} " alt="" >
+                    <div class="row">
+                    </div>
+                </div>
+                 {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+	    <!-- Property Details Section Begin -->
+    <section class="property-details-section">
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col-lg-8"> <div class="pd-text"> -->
+                    <div class="pd-text" style="width:100%">
+                        <div class="row" style="text-align:center" >
+                          <div style="width:100%" >   {#  class="col-lg-6" #}
+                                <div class="pd-title">
+                                    <div style="width:100%">
+                                        <h3  class="label" >{{ slug_2.get_status_of_project_display }}</h3>
+                                    </div>
+
+                                    <div class="pt-price"> <span> YEAR OF COMPLETION:
+                                    just a text TO CHECK IF TGHE CODES ARE WOKRING SN SN S S </span> {{ slug_2.year_of_completion }} </div>
+
+                                    <h3>{{ slug_2.name_of_project }}</h3>
+                                    <p><span class="icon_pin_alt"></span> {{ slug_2.address }}</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="pd-board">
+                            <div class="tab-board">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Overview</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Description</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">VIDEOS</a>
+                                    </li>
+                                </ul><!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                        <div class="tab-details">
+
+                                            <ul class="right-table" style="width: 25%;">
+                                                <li>
+                                                    <span class="type-value">Property Type</span>
+                                                </li>
+
+                                                     {% if types.values  %}
+                                                         {% for x in types %}
+
+                                                                <li>
+                                                                <span class="type-name">{{ x.get_type_offer_display }}</span>
+                                                                </li>
+
+                                                         {% endfor %}
+                                                    {% endif %}
+                                            </ul>
+                                              <ul class="right-table" style="width: 25%;">
+                                                <li>
+                                                    <span class="type-value">Room Type</span>
+                                                </li>
+
+                                                  {% if types.values  %}
+                                                         {% for x in types %}
+
+                                                                <li>
+                                                                <span class="type-name">{{ x.get_choices_rooms_display }}</span>
+                                                                </li>
+
+                                                         {% endfor %}
+                                                    {% endif %}
+                                            </ul>
+
+                                            <ul class="right-table" style="width: 25%;">
+                                                <li>
+                                                    <span class="type-value">Square meter m2</span>
+                                                </li>
+                                                   {% if types.values  %}
+                                                         {% for x in types.values %}
+
+                                                                <li>
+                                                                <span class="type-name">{{ x.square_meter  }}</span>
+                                                                </li>
+
+                                                         {% endfor %}
+                                                    {% endif %}
+                                            </ul>
+
+                                            <ul class="right-table" style="width: 25%;">
+                                                <li>
+                                                    <span class="type-value">Price in $</span>
+                                                </li>
+                                                  {% if types.values  %}
+                                                         {% for x in types.values %}
+
+                                                                <li>
+                                                                <span class="type-name">{{ x.price  }}</span>
+                                                                </li>
+
+                                                         {% endfor %}
+                                                    {% endif %}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                        <div class="tab-desc">
+                                            <p>{{ slug_2.description }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                        <div class="tab-details">
+
+                                            <ul  style="width: 100%; text-align: center;">
+
+                                                <li>
+                                                </li>
+
+                                                {% if videos.values  %}
+                                                         {% for x in videos.values %}
+                                                                <li>
+                                                                    <a class="nav-link"  href="{{ x.links  }}" > <span class="type-value">{{ x.text  }}</span></a>
+                                                                </li>
+                                                         {% endfor %}
+                                                {% endif %}
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- </div> -->
+
+            </div>
+
+			<div class="pd-text" style="width:100%">
+	 						  <div class="pd-widget">
+
+                            <h4>Location</h4>
+                            <div class="map">
+                                {% if slug_2.google_maps_field  %}
+                                <iframe src="{{ slug_2.google_maps_field }}" height="350" style="border:0;" allowfullscreen=""></iframe>
+                                {% else %}
+{#                                    <iframe src="" height="350" style="border:0;" allowfullscreen=""></iframe>#}
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d156217.40771382436!2d28.912877163120655!3d41.03752226018254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1sen!2str!4v1668872960168!5m2!1sen!2str" height="350" style="border:0;"  allowfullscreen="" ></iframe>
+                                {% endif %}
+
+                            </div>
+                            <div class="map-location">
+                                <div class="row">
+
+
+                                    <div class="col-lg-6">
+                                        <div class="ml-item">
+
+                                            <div class="ml-single-item">
+                                                {% if maps.values  %}
+                                                {% for x in maps.values %}
+                                                    {% if forloop.counter|divisibleby:2 != 0  %}
+                                                <h6>{{ x.place  }} <span>( <i class="fa fa-location-arrow"></i> {{ x.km }}  )</span></h6>
+                                                <p>{{ x.place_name  }}</p>
+                                                    {% endif %}
+                                                 {% endfor %}
+                                                 {% endif %}
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="ml-item">
+
+                                            <div class="ml-single-item">
+                                                {% if maps.values  %}
+                                                {% for x in maps.values %}
+                                                     {% if forloop.counter|divisibleby:2 == 0  %}
+                                                <h6>{{ x.place  }} <span>( <i class="fa fa-location-arrow"></i> {{ x.km }}  )</span></h6>
+                                                <p>{{ x.place_name  }}</p>
+                                                    {% endif %}
+                                                 {% endfor %}
+                                                 {% endif %}
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+	 </div>
+
+	<!-- Chooseus Section Begin -->
+    <!-- Chooseus Section End -->
+
+	<!-- Feature Property Section Begin -->
+{#    <section class="feature-property-section spad">#}
+{#        <div class="container">#}
+{#		<div  class="pd-text">#}
+{#                            <h4>Floor plans</h4>#}
+{#            </div>#}
+{#            <div class="row">#}
+{##}
+{#                <div class="col-lg-4 p-0">#}
+{#                    <div class="feature-property-left">#}
+{##}
+{#                        <div class="section-title">#}
+{#                            <h4>Feature PROPERTY</h4>#}
+{#                        </div>#}
+{#                        <ul>#}
+{#                            <li>Apartment</li>#}
+{#                            <li>House</li>#}
+{#                            <li>Office</li>#}
+{#                            <li>Hotel</li>#}
+{#                            <li>Villa</li>#}
+{#                            <li>Restaurent</li>#}
+{#                        </ul>#}
+{#                        <a href="#">View all property</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-8 p-0">#}
+{#                    <div class="fp-slider owl-carousel">#}
+{#                        <div class="fp-item set-bg" data-setbg="{% static 'img1/feature-property/fp-1.jpg'%}">#}
+{#                            <div class="fp-text">#}
+{#                                <h5 class="title">Home in Merrick Way</h5>#}
+{#                                <p><span class="icon_pin_alt"></span> 3 Middle Winchendon Rd, Rindge, NH 03461</p>#}
+{#                                <div class="label">For Rent</div>#}
+{#                                <h5>$ 289.0<span>/month</span></h5>#}
+{#                                <ul>#}
+{#                                    <li><i class="fa fa-object-group"></i> 2, 283</li>#}
+{#                                    <li><i class="fa fa-bathtub"></i> 03</li>#}
+{#                                    <li><i class="fa fa-bed"></i> 05</li>#}
+{#                                    <li><i class="fa fa-automobile"></i> 01</li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="fp-item set-bg" data-setbg="{% static 'img1/feature-property/fp-2.jpg'%}">#}
+{#                            <div class="fp-text">#}
+{#                                <h5 class="title">Home in Merrick Way</h5>#}
+{#                                <p><span class="icon_pin_alt"></span> 3 Middle Winchendon Rd, Rindge, NH 03461</p>#}
+{#                                <div class="label">For Rent</div>#}
+{#                                <h5>$ 289.0<span>/month</span></h5>#}
+{#                                <ul>#}
+{#                                    <li><i class="fa fa-object-group"></i> 2, 283</li>#}
+{#                                    <li><i class="fa fa-bathtub"></i> 03</li>#}
+{#                                    <li><i class="fa fa-bed"></i> 05</li>#}
+{#                                    <li><i class="fa fa-automobile"></i> 01</li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+    <!-- Feature Property Section End -->
+
+        </div>
+    </section>
+    <!-- Property Details Section End -->
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+
+            <div class="copyright-text">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+
+    </footer>
+
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+        <script src= "{% static 'js1/jquery-3.3.1.min.js' %}"></script>
+        <script src= "{% static 'js1/bootstrap.min.js' %}"></script>
+        <script src= "{% static 'js1/jquery.magnific-popup.min.js' %}"></script>
+        <script src= "{% static 'js1/mixitup.min.js' %}"></script>
+        <script src= "{% static 'js1/jquery-ui.min.js' %}"></script>
+        <script src= "{% static 'js1/jquery.nice-select.min.js' %}"></script>
+        <script src= "{% static 'js1/jquery.slicknav.js' %}"></script>
+        <script src= "{% static 'js1/owl.carousel.min.js' %}"></script>
+        <script src= "{% static 'js1/jquery.richtext.min.js' %}"></script>
+        <script src= "{% static 'js1/image-uploader.min.js' %}"></script>
+        <script src= "{% static 'js1/main.js' %}"></script>
+    </div>
+
+</body>
+
+{% endblock %}
+
+
+
+
+
+

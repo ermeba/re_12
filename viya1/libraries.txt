@@ -1,0 +1,24 @@
+
+to run the project:
+python manage.py runserver ( run in terminal of the main folder of the project)
+python manage.py makemigrations
+python mange.py migrate
+
+
+anaconda3
+python 3.9
+Django-4.1.5
+
+pip3 install djangorestframework  ()
+pip install django-admin-list-filter-dropdown  (install the drop-down filter)
+pip install django-admin-numeric-filter  (install the other type of filter)
+pip install django-wkhtmltopdf (and: download from: https://wkhtmltopdf.org/downloads.html, install, add bin in the path
+C:\Program Files\wkhtmltopdf\bin in  environmental variables)
+pip install pdfkit
+pip install mysqlclient
+pip install pillow
+
+
+
+
+

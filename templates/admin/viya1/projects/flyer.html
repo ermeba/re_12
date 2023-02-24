@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Flyer Design - 02</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600;700;800&display=swap"
+		rel="stylesheet"><link rel="stylesheet" href="./style.css">
+<style>
+
+:root {
+  box-sizing: border-box;
+  --aqua: hsl(194, 80%, 48%);
+  --aqua-dark: hsl(205, 61%, 43%);
+  --aqua-darker: hsl(194, 22%, 23%);
+  --gray-100: hsl(204, 45%, 98%);
+  --gray-200: hsl(210, 38%, 95%);
+  --gray-300: hsl(214, 32%, 91%);
+  --gray-400: hsl(211, 25%, 84%);
+  --gray-500: hsl(214, 20%, 69%);
+  --gray-600: hsl(216, 15%, 52%);
+  --gray-700: hsl(218, 17%, 35%);
+  --gray-800: hsl(218, 23%, 23%);
+  --gray-900: hsl(220, 26%, 14%);
+}
+
+*, ::before, ::after {
+  box-sizing: inherit;
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+body {
+  font-size: 100%;
+  font-family: "Libre Franklin", sans-serif;
+  color: hsl(216, 15%, 52%);;
+}
+
+.inspiration {
+  position: absolute;
+  top: 9em;
+  left: 1.5em;
+  transition: all 300ms ease-in;
+  font-size: 0.85em;
+  color: hsl(205, 61%, 43%);
+}
+
+.inspiration:hover {
+  color: hsl(194, 80%, 48%);
+}
+
+.outline {
+  width: 500px;
+  height: 700px;
+  border: 1px solid #a99e9e;
+  position: relative;
+  overflow: hidden;
+  margin: 2em auto;
+  border-top: 20px solid #28284d;
+  border-bottom: 20px solid #28284d;
+}
+
+.header {
+  padding: 1em 0 0 1.5em;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.triangle {
+  width: 35px;
+  height: 35px;
+  background-image: linear-gradient(30deg,
+  hsl(194, 80%, 48%) 0%,
+  hsl(194, 80%, 48%) 38%,
+  hsl(194, 80%, 48%) 38%,
+  hsl(194, 80%, 48%) 100%);
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+  margin-right: 0.75em;
+}
+
+h3 {
+  text-transform: uppercase;
+  font-size: 1.05em;
+  color: hsl(218, 17%, 35%);
+}
+
+.summary {
+  margin-top: 0.5em;
+  flex: 0 0 100%;
+  font-size: 0.7em;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(https://res.cloudinary.com/jduquain/f_auto,q_auto/street_daexuv.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: grayscale(1);
+  clip-path: polygon(0% 35%, 75% 0%, 100% 0%, 100% 35%, 0% 85%);
+}
+
+.title {
+  position: absolute;
+  top: 35%;
+  left: -30%;
+  right: 30%;
+  bottom: 47%;
+  background-color: rgba(24, 175, 220, 0.4);
+  transform: skewX(-55deg);
+  text-align: center;
+}
+
+.title h1 {
+  transform: skewX(55deg);
+  color: #fff;
+}
+
+.title h1 span:first-of-type {
+  display: block;
+  font-size: 2.2em;
+  line-height: 1;
+  margin-top: 0.14em;
+  transform: translateX(18px);
+}
+
+.title h1 span:last-of-type {
+  display: block;
+  font-size: 0.9em;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  transform: translate(42px, -3px);
+  line-height: 1;
+}
+
+.blue-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 42%;
+  bottom: 0;
+  background-color: #28284d;
+  z-index: -1;
+  clip-path: polygon(0% 0%, 100% 0%, 17% 74%, 50% 100%, 0% 100%);
+}
+
+.footer {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  width: 55%;
+  text-align: right;
+  padding-right: 1.5em;
+}
+
+.footer h4 {
+  text-transform: uppercase;
+  font-size: 0.7em;
+}
+
+.footer h4 span {
+  color: hsl(194, 80%, 48%);
+}
+
+.footer p {
+  font-size: 0.55em;
+}
+
+.social {
+  margin-top: 1em;
+  display: flex;
+}
+
+.icon--wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon--svg {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: hsl(194, 80%, 48%);
+  fill: #fff;
+}
+
+.social p {
+  font-size: 0.45em;
+  text-align: center;
+  margin-top: 1em;
+}
+	</style>
+
+</head>
+<body>
+
+{% block content_title %}
+<!-- partial:index.partial.html -->
+<div class="outline">
+    <a href="https://res.cloudinary.com/jduquain/f_auto,q_auto/flyer-02_icwkfj.jpg" class="inspiration" target="_blank" rel="noopener"
+	>
+
+		<img  class="first-slide" src="file:///C:/Users/Ermira/PycharmProjects/viya/viya/static/w3images/foto2.jpg" alt="First slide" />
+		Inspiration</a>
+    
+    <div class="header">
+      <div class="triangle"></div>
+      <h3>company name</h3>
+      <p class="summary">Lorem ipsum dolor sit amet adipis elit Architecto quibusdam eligendi.</p>
+    </div>
+	
+	  <div class="background"></div>
+	  
+	  <div class="title">
+	    <h1>
+	      <span>2020</span>
+	      <span>Annual Report</span>
+	    </h1>
+	  </div>
+	
+	
+	  <div class="blue-background"></div>
+	
+	  <div class="footer">
+	    <h4>Lorem Ipsum <span>Dolor Sit Amet</span></h4>
+	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignin, possimus, quis? Odio ullam eos aliquid consequatur, expedita sit quae ah bota ale sure hollish.</p>
+	    <div class="social">
+	      <div class="icon--wrap">
+	        <div class="icon--svg">
+	          <svg class="icon-user" viewBox="-16 -13 63 63" width="35" height="35">
+              <path d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"></path>
+            </svg>
+	        </div>
+	        <p class="icon--para">Accusamus dicta sed quia, ullam aut.</p>
+	      </div>
+	      <div class="icon--wrap">
+	        <div class="icon--svg">
+	          <svg class="icon-search" viewBox="-16 -15 63 63" width="35" height="35">
+              <path d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path>
+            </svg>
+	        </div>
+	        <p class="icon--para">Accusamus dicta sed quia, ullam aut.</p>
+	      </div>
+	      <div class="icon--wrap">
+	        <div class="icon--svg">
+	          <svg class="icon-home" viewBox="-16 -13 63 63" width="35" height="35">
+              <path d="M32 18.451l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18v12h-8v-8h-8v8h-8v-12l12-9z"></path>
+            </svg>
+	        </div>
+	        <p class="icon--para">Accusamus dicta sed quia, ullam aut.</p>
+	      </div>
+	    </div>
+	  </div>
+	
+  </div>
+<!-- partial -->
+  
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,189 @@
+:root {
+  box-sizing: border-box;
+  --aqua: hsl(194, 80%, 48%);
+  --aqua-dark: hsl(205, 61%, 43%);
+  --aqua-darker: hsl(194, 22%, 23%);
+  --gray-100: hsl(204, 45%, 98%);
+  --gray-200: hsl(210, 38%, 95%);
+  --gray-300: hsl(214, 32%, 91%);
+  --gray-400: hsl(211, 25%, 84%);
+  --gray-500: hsl(214, 20%, 69%);
+  --gray-600: hsl(216, 15%, 52%);
+  --gray-700: hsl(218, 17%, 35%);
+  --gray-800: hsl(218, 23%, 23%);
+  --gray-900: hsl(220, 26%, 14%);
+}
+
+*, ::before, ::after {
+  box-sizing: inherit;
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+body {
+  font-size: 100%;
+  font-family: "Libre Franklin", sans-serif;
+  color: var(--gray-600);
+}
+
+.inspiration {
+  position: absolute;
+  top: 9em;
+  left: 1.5em;
+  transition: all 300ms ease-in;
+  font-size: 0.85em;
+  color: var(--aqua-dark);
+}
+
+.inspiration:hover {
+  color: var(--aqua);
+}
+
+.outline {
+  width: 500px;
+  height: 700px;
+  border: 1px solid #a99e9e;
+  position: relative;
+  overflow: hidden;
+  margin: 2em auto;
+  border-top: 20px solid #28284d;
+  border-bottom: 20px solid #28284d;
+}
+
+.header {
+  padding: 1em 0 0 1.5em;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.triangle {
+  width: 35px;
+  height: 35px;
+  background-image: linear-gradient(30deg, var(--aqua) 0%, var(--aqua) 38%, var(--aqua-dark) 38%, var(--aqua-dark) 100%);
+  -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+          clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+  margin-right: 0.75em;
+}
+
+h3 {
+  text-transform: uppercase;
+  font-size: 1.05em;
+  color: var(--gray-700);
+}
+
+.summary {
+  margin-top: 0.5em;
+  flex: 0 0 100%;
+  font-size: 0.7em;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(https://res.cloudinary.com/jduquain/f_auto,q_auto/street_daexuv.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: grayscale(1);
+  -webkit-clip-path: polygon(0% 35%, 75% 0%, 100% 0%, 100% 35%, 0% 85%);
+          clip-path: polygon(0% 35%, 75% 0%, 100% 0%, 100% 35%, 0% 85%);
+}
+
+.title {
+  position: absolute;
+  top: 35%;
+  left: -30%;
+  right: 30%;
+  bottom: 47%;
+  background-color: rgba(24, 175, 220, 0.4);
+  transform: skewX(-55deg);
+  text-align: center;
+}
+
+.title h1 {
+  transform: skewX(55deg);
+  color: #fff;
+}
+
+.title h1 span:first-of-type {
+  display: block;
+  font-size: 2.2em;
+  line-height: 1;
+  margin-top: 0.14em;
+  transform: translateX(18px);
+}
+
+.title h1 span:last-of-type {
+  display: block;
+  font-size: 0.9em;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  transform: translate(42px, -3px);
+  line-height: 1;
+}
+
+.blue-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 42%;
+  bottom: 0;
+  background-color: #28284d;
+  z-index: -1;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 17% 74%, 50% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 100% 0%, 17% 74%, 50% 100%, 0% 100%);
+}
+
+.footer {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  width: 55%;
+  text-align: right;
+  padding-right: 1.5em;
+}
+
+.footer h4 {
+  text-transform: uppercase;
+  font-size: 0.7em;
+}
+
+.footer h4 span {
+  color: var(--aqua);
+}
+
+.footer p {
+  font-size: 0.55em;
+}
+
+.social {
+  margin-top: 1em;
+  display: flex;
+}
+
+.icon--wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon--svg {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: var(--aqua);
+  fill: #fff;
+}
+
+.social p {
+  font-size: 0.45em;
+  text-align: center;
+  margin-top: 1em;
+}
