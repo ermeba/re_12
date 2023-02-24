@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'viya1',
     'rest_framework',
-    'admindrop',
     'django_admin_listfilter_dropdown',
     'admin_numeric_filter',
     'wkhtmltopdf',
